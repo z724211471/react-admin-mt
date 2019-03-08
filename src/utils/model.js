@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import './utils.less'
 
 class Model extends Component {
   
   render() {
     return (
-      <div style={{}}>
+      <div className='modelview'>
 
       </div>
     );

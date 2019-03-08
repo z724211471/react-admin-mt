@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Table, Divider, message } from "antd";
 import Http from "../../utils/server";
-import Model from "../../utils/model";
-class Bookclass extends Component {
+class Booklist extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,13 +29,13 @@ class Bookclass extends Component {
     })
       .then(rec => {
         if (rec.data.code === 200) {
-         
-  
-            this.setState({ tabledata: this.state.tabledata.filter(x=>x.id!==id) });
-            message.success(rec.data.msg);
-          } else {
-            message.warning(rec.data.msg);
-          }
+          this.setState({
+            tabledata: this.state.tabledata.filter(x => x.id !== id)
+          });
+          message.success(rec.data.msg);
+        } else {
+          message.warning(rec.data.msg);
+        }
       })
       .catch(err => {
         console.log(err);
@@ -86,22 +85,22 @@ class Bookclass extends Component {
       classname: this.state.cname
     })
       .then(rec => {
-          if(rec.data.code===200){
-            this.setState({
-                tabledata: this.state.tabledata.map(x => {
-                  return x.id === this.state.cid
-                    ? { id: x.id, classname: this.state.cname }
-                    : x;
-                })
-              });
-              this.setState({ cid: 0,cname:"" });
-              message.success(rec.data.msg)
-          }else{
-            message.warning(rec.data.msg)
-          }
+        if (rec.data.code === 200) {
+          this.setState({
+            tabledata: this.state.tabledata.map(x => {
+              return x.id === this.state.cid
+                ? { id: x.id, classname: this.state.cname }
+                : x;
+            })
+          });
+          this.setState({ cid: 0, cname: "" });
+          message.success(rec.data.msg);
+        } else {
+          message.warning(rec.data.msg);
+        }
       })
       .catch(err => {
-        message.error('更新发生错误');
+        message.error("更新发生错误");
       });
   }
   render() {
@@ -150,16 +149,8 @@ class Bookclass extends Component {
     return (
       <div>
         <div>
-          {" "}
-          <Input
-            placeholder="请输入文字分类"
-            style={{ width: "80%" }}
-            type="text"
-            value={this.state.text}
-            onChange={this.handletext}
-          />{" "}
           <Button type="primary" onClick={this.addClass.bind(this)}>
-            添加分类
+            添加文章
           </Button>
         </div>
         {/* <Model></Model> */}
