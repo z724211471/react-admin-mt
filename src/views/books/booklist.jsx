@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Table, Divider, message } from "antd";
 import Http from "../../utils/server";
+import { Link } from "react-router-dom";
 class Booklist extends Component {
   constructor(props) {
     super(props);
@@ -149,9 +150,10 @@ class Booklist extends Component {
     return (
       <div>
         <div>
-          <Button type="primary" onClick={this.addClass.bind(this)}>
+        <Link to='/addbook'>添加文章</Link>
+          {/* <Button type="primary" onClick={this.addClass.bind(this)}>
             添加文章
-          </Button>
+          </Button> */}
         </div>
         {/* <Model></Model> */}
         <Table
@@ -164,4 +166,4 @@ class Booklist extends Component {
   }
 }
 
-export default Bookclass;
+export default Booklist;

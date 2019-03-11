@@ -5,6 +5,8 @@ import Shop from "./views/shopplist/shop";
 import Bookclass from './views/bookclass/index'
 import { Layout, Breadcrumb } from "antd";
 import LeftMenu from "./components/leftMenu";
+import Booklist from './views/books/booklist';
+import Addbook from './views/books/addbook';
 const { Header, Content, Footer } = Layout;
 class SiderDemo extends React.Component {
   
@@ -25,6 +27,8 @@ class SiderDemo extends React.Component {
                   <Route exact path="/" component={App} />
                   <Route path="/shop" component={Shop} />
                   <Route path='/bookclass' component={Bookclass}></Route>
+                  <Route path='/booklist' component={Booklist}></Route>
+                  <Route path='/addbook' component={Addbook}></Route>
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>

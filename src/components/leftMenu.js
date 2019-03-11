@@ -1,7 +1,6 @@
 import React from "react";
 import { Menu, Icon, Layout } from "antd";
-import { Link } from "react-router-dom";
-import { withRouter } from 'react-router-dom';
+import { Link,withRouter } from "react-router-dom";
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 class LeftMenu extends React.Component {
@@ -68,7 +67,8 @@ class LeftMenu extends React.Component {
           >
             <Menu.Item key="/bookclass"><Link to="/bookclass" style={{'display':'inline-block'}}>
             文章分类</Link></Menu.Item>
-            <Menu.Item key="8">文章列表</Menu.Item>
+            <Menu.Item key="/booklist"><Link to="/booklist" style={{'display':'inline-block'}}>
+            文章列表</Link></Menu.Item>
           </SubMenu>
           <Menu.Item key="9">
             <Icon type="file" />
