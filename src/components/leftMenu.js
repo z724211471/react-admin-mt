@@ -70,9 +70,9 @@ class LeftMenu extends React.Component {
             <Menu.Item key="/booklist"><Link to="/booklist" style={{'display':'inline-block'}}>
             文章列表</Link></Menu.Item>
           </SubMenu>
-          <Menu.Item key="9">
+          <Menu.Item key="addfile">
             <Icon type="file" />
-            <span>文件管理</span>
+            <Link to='/addfile' style={{'display':'inline-block'}}>文件管理</Link>
           </Menu.Item>
         </Menu>
       </Sider>
