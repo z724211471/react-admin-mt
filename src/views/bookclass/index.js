@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Button, Input, Table, Divider, message } from "antd";
 import Http from "../../utils/server";
 import Model from "../../utils/model";
+import {connect} from 'react-redux'
+import {getlist,dellist} from '../redux/addBooks'
+
 class Bookclass extends Component {
   constructor(props) {
     super(props);
@@ -12,12 +15,19 @@ class Bookclass extends Component {
       cid: 0
     };
   }
+ 
+  
   componentWillMount() {
+    console.log(this.props);
     this.getData();
-  }
+    this.props.getlist();
+    console.log(this.props.value);
+  } 
   getData = () => {
+ 
     Http.post("getclass", {})
       .then(rec => {
+     
         this.setState({ tabledata: rec.data.data });
       })
       .catch(err => {
@@ -25,24 +35,25 @@ class Bookclass extends Component {
       });
   };
   delclass = id => {
-    Http.post("delclass", {
-      id: id
-    })
-      .then(rec => {
-        if (rec.data.code === 200) {
+    this.props.delbook(id);
+    // Http.post("delclass", {
+    //   id: id
+    // })
+    //   .then(rec => {
+    //     if (rec.data.code === 200) {
          
-  
-            this.setState({ tabledata: this.state.tabledata.filter(x=>x.id!==id) });
-            message.success(rec.data.msg);
-          } else {
-            message.warning(rec.data.msg);
-          }
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    //         this.setState({ tabledata: this.state.tabledata.filter(x=>x.id!==id) });
+    //         message.success(rec.data.msg);
+    //       } else {
+    //         message.warning(rec.data.msg);
+    //       }
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   };
   addClass = () => {
+  
     if (!this.state.text.length) {
       message.error("请输入分类名称");
       return;
@@ -165,12 +176,23 @@ class Bookclass extends Component {
         {/* <Model></Model> */}
         <Table
           columns={columns}
-          dataSource={this.state.tabledata}
+          dataSource={this.props.value}
           rowKey="id"
         />
       </div>
     );
   }
 }
-
-export default Bookclass;
+let mapStateToProps=(state)=>{
+  console.log(state);
+  return {
+    value: state
+  }
+}
+let mapDispatchToProps=(dispatch)=>{
+  return {
+    getlist:()=>{dispatch(getlist())},
+    delbook:(bid)=>{dispatch(dellist(bid))},
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps,null)(Bookclass);
