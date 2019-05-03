@@ -33,7 +33,7 @@ class LeftMenu extends React.Component {
       >
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={[this.state.currentUrl]} mode="inline" onSelect={this.handleSelectKey.bind(this)}>
-          <Menu.Item key="/">
+          {/* <Menu.Item key="/">
             <Icon type="pie-chart" />
             <span>图谱</span>
           </Menu.Item>
@@ -54,8 +54,8 @@ class LeftMenu extends React.Component {
           >
             <Menu.Item key="3">前台用户</Menu.Item>
             <Menu.Item key="4">后台用户</Menu.Item>
-            <Menu.Item key="5">二逼用户</Menu.Item>
-          </SubMenu>
+            
+          </SubMenu> */}
           <SubMenu
             key="sub2"
             title={
